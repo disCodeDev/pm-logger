@@ -11,9 +11,7 @@ import datetime
 import warnings
 import os
 import json
-import googlesearch
 import psutil
-from googlesearch import search
 from datetime import datetime
 import autopep8
 
