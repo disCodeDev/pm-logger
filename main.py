@@ -14,6 +14,7 @@ async def pmanity(ctx):
 
 @client.event
 async def on_ready():
+    client.change_presence(status=discord.Status.idle, activity=discord.Game('-help・Plaimanity.com'))
     print('Logged in!')
 
 client.run(os.environ['DISCORD_TOKEN'])
