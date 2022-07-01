@@ -3,8 +3,8 @@ import os
 
 client = discord.Client()
 
-@bot.event
+@client.event
 async def on_ready():
     print('Logged in!')
 
-bot.run(os.environ['login'])
+cient.run(os.environ['login'])
