@@ -129,14 +129,6 @@ async def node(ctx):
 
 
 
-@bot.command()
-async def pmanity(ctx):
-    embed = discord.Embed(description="**Playmanity** is a new generation gamimg platform for all of the users around the world. We provide everyone free games using ads. This is not anoying at all, because the ads only play when the game is starting, loading or you exit the game. We bring hundreds of players to our platform every day, why don't you join? \n ** ** \nJoin our discord server for more detailed information about our platform.\n> **https://discord.gg/AERk6WrzBS**", color=0x4c00ff)
-    embed.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
-    embed.set_footer(text="Playmanity Security - 2022®")#, timestamp=datetime.utcnow())
-    await ctx.send(embed=embed)
-
-
 bot.load_extension('cogs.Messages')
 bot.load_extension('cogs.Reactions')
 bot.load_extension('cogs.Commands')
@@ -144,4 +136,5 @@ bot.load_extension('cogs.Tickets')
 bot.load_extension('cogs.Help')
 bot.load_extension('cogs.Config')
 bot.load_extension('cogs.Uptime')
+bot.load_extension('cogs.PM')
 bot.run(os.environ['DISCORD_TOKEN'])

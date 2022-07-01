@@ -179,13 +179,13 @@ class Commands(commands.Cog):
             if BlackList[i] in message.content:
                 for j in range(1):
                     await message.delete()
-                    await message.author.send(f"**<:oops:964606229341151373> {message.author}**, don't use bad words in PaperBots server!")
-    
+                    await message.author.send(f"**<:oops:964606229341151373> {message.author}**, don't use bad words in Playmanity Discord!")
+'''   
     @commands.Cog.listener()
     async def on_member_join(self, member):
         role = discord.utils.get(member.guild.roles, name="Member")
         await member.add_roles(role)
-
+'''
 def setup(bot):
     bot.add_cog(Commands(bot))
     print("Commands cog loaded")
