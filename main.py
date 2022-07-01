@@ -7,4 +7,4 @@ client = discord.Client()
 async def on_ready():
     print('Logged in!')
 
-cient.run(os.environ['login'])
+client.run(os.environ['login'])
