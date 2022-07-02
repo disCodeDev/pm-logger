@@ -29,10 +29,9 @@ class Playmanity(commands.Cog):
     @commands.command()
     @commands.has_permissions()
     async def newidea(self, ctx, title, *, idea):
-        user = ctx.member
         newideaemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
         newideaemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
-        newideaemb.set_footer(text=f"Idea by: {user.name} ・ {user.id} \nPlaymanity Security - 2022®")
+        newideaemb.set_footer(text=f"Idea by: {ctx.author.name} ・ {ctx.author.id} \nPlaymanity Security - 2022®")
         newideaemb.add_field(name="<:pmdot2:992498402594127962> New Idea!", value=f"{title}\n> {idea}", inline=False)
         await ctx.send(embed=newideaemb)
 
