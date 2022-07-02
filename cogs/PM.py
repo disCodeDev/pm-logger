@@ -29,8 +29,8 @@ class Playmanity(commands.Cog):
     @commands.command()
     @commands.has_permissions()
     async def newidea(self, ctx, title, *, idea):
-        newideaemb = discord.Embed(description=f"{title}\n> {idea}", timestamp=datetime.utcnow(), color=0x2F3136)
-        newideaemb.set_author(name="<:pmdot2:992498402594127962> New Idea!", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        newideaemb = discord.Embed(description=f"> {idea}", timestamp=datetime.utcnow(), color=0x2F3136)
+        newideaemb.set_author(name=f"New Idea! ・ {title}", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         newideaemb.set_footer(text=f"Idea by: {ctx.author.name} ・ {ctx.author.id} \nPlaymanity Security - 2022®")
         await ctx.send(embed=newideaemb)
 
