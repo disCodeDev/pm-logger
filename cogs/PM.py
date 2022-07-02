@@ -13,18 +13,28 @@ class Playmanity(commands.Cog):
         gamesemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
         gamesemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         gamesemb.set_footer(text="Playmanity Security - 2022®")
-        gamesemb.add_field(name="Playmanity Games", value="Down here you can see the list of games we currently have: \n<:pmdot2:992498402594127962> Arpsic \n<:pmdot2:992498402594127962> The Kostka \n** **\n> That's all we have for now, but don't worry, we add more games every week! \n> If you are a game developer or publisher and want to work with us, please reach any of the staff team members to get started! Remember, you get a few perks ;)", inline=False)
+        gamesemb.add_field(name="<:pmdot2:992498402594127962> Playmanity Games", value="Down here you can see the list of games we currently have: \n<:pmdot2:992498402594127962> Arpsic \n<:pmdot2:992498402594127962> The Kostka \n** **\n> That's all we have for now, but don't worry, we add more games every week! \n> If you are a game developer or publisher and want to work with us, please reach any of the staff team members to get started! Remember, you get a few perks ;)", inline=False)
         await ctx.send(embed=gamesemb)
+
 
     @commands.command()
     @commands.has_permissions()
     async def dcideas(self, ctx):
         ideasemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
-
-
-
-
+        ideasemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        ideasemb.set_footer(text="Playmanity Security - 2022®")
+        ideasemb.add_field(name="<:pmdot2:992498402594127962> Playmanity Ideas", value="In this channel you can post your suggestions to our platform or discord server.\n**Template:** `-newidea <idea title> <idea description>` \n** **\n> **IMPORTANT NOTE:** Post your game suggestions to <#992308123735961660> channel!", inline=False)
         await ctx.send("template command")
+
+    @commands.command()
+    @commands.has_permissions()
+    async def newidea(self, ctx, title, *, idea):
+        newideaemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
+        newideaemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        newideaemb.set_footer(text=f"Idea by: {ctx.member.name} ・ {ctx.member.id} \nPlaymanity Security - 2022®")
+        newideaemb.add_field(name="<:pmdot2:992498402594127962> New Idea!", value=f"{title}\n> {idea}", inline=False)
+        await ctx.send(embed=newideaemb)
+
 
     @commands.command()
     @commands.has_permissions()
