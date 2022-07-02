@@ -28,7 +28,7 @@ class Playmanity(commands.Cog):
 
     @commands.command()
     @commands.has_permissions()
-    async def newidea(self, ctx, user, title, *, idea):
+    async def newidea(self, ctx, title, *, idea):
         user = ctx.member
         newideaemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
         newideaemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
