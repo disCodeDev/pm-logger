@@ -63,7 +63,7 @@ class Playmanity(commands.Cog):
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def mntn(self, ctx):
-        allowed_mentions = discord.AllowedMentions.all
+        allowed_mentions = discord.AllowedMentions(everyone = True)
         await ctx.send(content = "@everyone", allowed_mentions = allowed_mentions)
 
 
