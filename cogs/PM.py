@@ -24,14 +24,15 @@ class Playmanity(commands.Cog):
         ideasemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         ideasemb.set_footer(text="Playmanity Security - 2022®")
         ideasemb.add_field(name="<:pmdot2:992498402594127962> Playmanity Ideas", value="In this channel you can post your suggestions to our platform or discord server.\n**Template:** `-newidea <idea title> <idea description>` \n** **\n> **IMPORTANT NOTE:** Post your game suggestions to <#992308123735961660> channel!", inline=False)
-        await ctx.send("template command")
+        await ctx.send(embed=ideasemb)
 
     @commands.command()
     @commands.has_permissions()
-    async def newidea(self, ctx, title, *, idea):
+    async def newidea(self, ctx, user, title, *, idea):
+        user = ctx.member
         newideaemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
         newideaemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
-        newideaemb.set_footer(text=f"Idea by: {ctx.member.name} ・ {ctx.member.id} \nPlaymanity Security - 2022®")
+        newideaemb.set_footer(text=f"Idea by: {user.name} ・ {user.id} \nPlaymanity Security - 2022®")
         newideaemb.add_field(name="<:pmdot2:992498402594127962> New Idea!", value=f"{title}\n> {idea}", inline=False)
         await ctx.send(embed=newideaemb)
 
@@ -57,6 +58,14 @@ class Playmanity(commands.Cog):
         infoemb.add_field(name="<:pmdot2:992498402594127962> Rules:", value="`01` ─ Treat everyone with respect. No harassment or threats, witch hunting, sexism, racism, or hate speech will be tolerated. \n`02` ─ Any type of discrimination, extreme swearing, and harassment is not allowed. \n`03` ─ No NSFW, drama, slander, or stirring (incl. fake news, unproven data). \n`04` ─ Spam is not welcome (this includes text walls). \n`05` ─ Use your common sense. \n`06` ─ Any type of advertisements are forbidden and can be reported via ticket. \n`07` ─ Any type of phishing is strictly not allowed and will result in an instant ban. \n`08` ─ Follow Discord's [Terms of Service](https://discord.com/terms) & [Community Guidelines](https://discord.com/guidelines)! \n` - ` Breaking any of these rules will insult to moderating action!", inline=False)
         infoemb.add_field(name="<:pmdot2:992498402594127962> Links:", value="[Kickstarter](https://www.kickstarter.com/projects/playmanity/playmanity?ref=8f8kr8&token=fdad64e2) ・ [Instagram](https://www.instagram.com/playmanity/) ・ [Twitter](https://twitter.com/playmanity) ・ [Telegram](https://t.me/playmanity) ・ [YouTube](https://www.youtube.com/channel/UCx6Lrn7heLP17FNc1eNqQZA) ・ [TikTok](https://www.tiktok.com/@playmanity)", inline=False)
         await ctx.send(embed=infoemb)
+
+
+    @commands.command()
+    @commands.has_permissions(administrator=True)
+    async def mntn(self, ctx):
+        allowed_mentions = discord.AllowedMentions.all
+        await ctx.send(content = "@everyone", allowed_mentions = allowed_mentions)
+
 
 
 def setup(bot):
