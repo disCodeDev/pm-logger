@@ -29,10 +29,10 @@ class Playmanity(commands.Cog):
 
     @commands.command()
     @commands.has_permissions()
-    async def edit(self, ctx, msg_id: int = None, channel: discord.TextChannel = None):
-        if not msg_id:
-            channel = self.bot.get_channel(992048478882627594) # the message's channel
-            msg_id = 992882653571330118 # the message's id
+    async def edit(self, ctx):
+        channel = discord.utils.get(guild.text_channels, name="💡・ideas")
+        #channel = self.bot.get_channel(992048478882627594) # the message's channel
+        msg_id = 992882653571330118 # the message's id
         msg = await ctx.channel.fetch_message(msg_id)
         await msg.edit(embed=ideasemb)
 
