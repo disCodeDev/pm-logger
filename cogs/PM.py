@@ -33,9 +33,7 @@ class Playmanity(commands.Cog):
         if not msg_id:
             channel = self.bot.get_channel(992048478882627594) # the message's channel
             msg_id = 992882653571330118 # the message's id
-        elif not channel:
-            channel = ctx.channel
-        msg = await channel.fetch_message(msg_id)
+        msg = await ctx.channel.fetch_message(msg_id)
         await msg.edit(embed=ideasemb)
 
     @commands.command()
