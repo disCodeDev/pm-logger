@@ -23,7 +23,7 @@ class Playmanity(commands.Cog):
         ideasemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
         ideasemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         ideasemb.set_footer(text="Playmanity Security - 2022®")
-        ideasemb.add_field(name="<:pmdot2:992498402594127962> Playmanity Ideas", value="In this channel you can post your suggestions to our platform or discord server.\n**Template:** `-newidea <idea title> <idea description>` \n** **\n> **IMPORTANT NOTE:** Post your game suggestions to <#992308123735961660> channel!", inline=False)
+        ideasemb.add_field(name="<:pmdot2:992498402594127962> Playmanity Ideas", value="In this channel you can post your suggestions to our platform or discord server.\n**Template:** `-newidea <\"idea title\"> <idea description>` \n** **\n> **IMPORTANT NOTE:** Post your game suggestions to <#992308123735961660> channel!", inline=False)
         await ctx.send(embed=ideasemb)
 
     @commands.command()
