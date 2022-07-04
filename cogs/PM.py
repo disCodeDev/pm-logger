@@ -41,11 +41,11 @@ class Playmanity(commands.Cog):
     @commands.has_permissions()
     async def newidea(self, ctx, title, *, idea):
         await ctx.message.delete()
-        channel = discord.utils.get(ctx.guild.text_channels, name="💡・ideas")
+        channel = self.bot.get_channel(992048478882627594)
         newideaemb = discord.Embed(description=f"> {idea}", timestamp=datetime.utcnow(), color=0x2F3136)
         newideaemb.set_author(name=f"New Idea! ・ {title}", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         newideaemb.set_footer(text=f"Idea by: {ctx.author.name} ・ {ctx.author.id} \nPlaymanity Security - 2022®")
-        await ctx.channel.send(embed=newideaemb)
+        await channel.send(embed=newideaemb)
 
     @commands.Cog.listener()
     async def on_message(self, message):
