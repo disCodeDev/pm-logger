@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from datetime import datetime
 
+
 class Playmanity(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -43,6 +44,34 @@ class Playmanity(commands.Cog):
         newideaemb.set_author(name=f"New Idea! ・ {title}", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         newideaemb.set_footer(text=f"Idea by: {ctx.author.name} ・ {ctx.author.id} \nPlaymanity Security - 2022®")
         await ctx.send(embed=newideaemb)
+
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if message.channel.name != "💡・ideas":
+            return
+        await message.add_reaction("<:up:993485860139958353>")
+        await message.add_reaction("<:down:993485861624754286>")
+        
+    @commands.Cog.listener()
+    async def on_reaction_add(self, reaction, user):
+        up_needed = 2 # Number of upvotes needed
+        down_needed = 15 # Number of downvotes needed
+        idea_channel = discord.utils.get(ctx.guild.text_channels, name="💡・ideas") # Staff Team channel
+        if reaction.message.channel.name != "💡・ideas":
+            return
+        if (reaction.emoji == upvote) and (reaction.count == up_needed):
+            await ctx.ideachann.send(f"This idea has reached {str(up_needed)} upvotes, and waiting to be reviewed by Staff Team!")
+            await ctx.ideachann.send(reaction.message.content)
+            await message.author.send(f"This idea has reached {str(up_needed)} upvotes, and waiting to be reviewed by Staff Team!")
+            await reaction.message.delete()
+            #await bot.send_message(reaction.message.guild.get_member_named(admin), "A suggestion has reached " + str(up_needed) + " :arrow_up:!")
+            #await bot.send_message(reaction.message.server.get_member_named(admin), reaction.message.content)
+
+        #if (reaction.emoji == downvote) and (reaction.count == down_needed):
+            #await bot.send_message(reaction.message.server.get_member_named(admin), "A suggestion has got " + str(down_needed) + " :arrow_down:!")
+            #await bot.send_message(reaction.message.server.get_member_named(admin), reaction.message.content)
+            #await reaction.message.delete()
+
 
 
     @commands.command()
