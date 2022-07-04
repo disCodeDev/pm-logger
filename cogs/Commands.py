@@ -20,6 +20,8 @@ class Commands(commands.Cog):
     @commands.command(aliases=["av", "avtr", "pfp", "picture"])
     async def avatar(self, ctx, *, member: discord.Member):
         await ctx.message.delete()
+        if member == None:
+            member = ctx.author
         userAvatarUrl = member.avatar_url
         user = member.name
         ave = discord.Embed(timestamp=datetime.utcnow())
@@ -38,7 +40,7 @@ class Commands(commands.Cog):
         await ctx.message.delete()
         await member.ban(reason=reason)
         await member.send(f"**<:kick:943475341526175745> You have been banned in `{ctx.guild}`!** \n<:kick:943475341526175745> **Reason:** *{reason}*")
-        await ctx.send(f"<:corect1:943464328252764230> Member {user} has been Banned!", delete_after=15)
+        await ctx.send(f"<:corect1:943464328252764230> Member **{member.display_name}** has been Banned!", delete_after=15)
 
 
     @commands.command()
@@ -71,7 +73,7 @@ class Commands(commands.Cog):
         else:
             await ctx.send(f"<:oops:964606229341151373> Channel named {channel.name} not found!")
 
-    @commands.command(aliases=["cl", "clear"])
+    @commands.command(aliases=["cl", "clear", "p"])
     @commands.has_permissions(manage_messages=True)
     async def purge(self, ctx, amount: int = None):
         await ctx.message.delete()

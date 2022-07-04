@@ -35,6 +35,8 @@ async def on_ready():
     print("--- Ready! ---")
     await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name='-help・Plaimanity.com'))
 
+
+
 # COGS
 @bot.command()
 async def load(ctx, cog: str):
@@ -124,7 +126,7 @@ async def node(ctx):
     bedem = discord.Embed(title = 'System Resource Usage', description = 'See CPU and memory usage of the system.')
     bedem.add_field(name = 'CPU Usage', value = f'{psutil.cpu_percent()}%', inline = False)
     bedem.add_field(name = 'Memory Usage', value = f'{psutil.virtual_memory().percent}%', inline = False)
-    bedem.add_field(name = 'Available Memory', value = f'{psutil.virtual_memory().available * 100 / psutil.virtual_memory().total}%', inline = False)
+    bedem.add_field(name = 'Available Memory', value = f'{psutil.virtual_memory().available * 100} / {psutil.virtual_memory().total}MB', inline = False)
     await ctx.send(embed = bedem)
 
 
