@@ -55,6 +55,8 @@ class Playmanity(commands.Cog):
         
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
+        upvote = "<:up:993485860139958353>"
+        downvote = "<:down:993485861624754286>"
         up_needed = 2 # Number of upvotes needed
         down_needed = 15 # Number of downvotes needed
         #idea_channel = discord.utils.get(ctx.guild.text_channels, name="💡・ideas") # Staff Team channel
