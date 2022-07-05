@@ -66,8 +66,8 @@ class Playmanity(commands.Cog):
             return
 
         if (reaction.emoji == upvote) and (reaction.count == up_needed):
-            await ideachann.send(f"This idea has reached {str(up_needed)} upvotes, and waiting to be reviewed by Staff Team!")
-            await ideachann.send(reaction.message.content)
+            await idea_channel.send(f"This idea has reached {str(up_needed)} upvotes, and waiting to be reviewed by Staff Team!")
+            await idea_channel.send(reaction.message.content)
             await message.author.send(f"Your idea has reached {str(up_needed)} upvotes, and waiting to be reviewed by Staff Team!")
             await message.author.send(reaction.message.content)
             await reaction.message.delete()
@@ -112,10 +112,11 @@ class Playmanity(commands.Cog):
         allowed_mentions = discord.AllowedMentions(everyone = True)
         await ctx.send(content = "@everyone", allowed_mentions = allowed_mentions, delete_after=0.1)
 
+
     @commands.command()
     @commands.has_permissions()
     async def betanch(self, ctx):
-        betaemb = discord.Embed(description="Finally, we want to introduce our BETA Launch! Thanks for being so active in our discord! Today we are making a giveaway where everyone are in the participants list for being with us on Discord. \n**On this occasion, we are giving away FREE 50 BETA Tester roles where you can try our app and platform!** And the best this is that you don't have to do anything! Just stay in this Discord Server and invite some of your friends for good luck :) \nWinners will be chosen on **July 27**, so don't sleep, there isn't much time left!", timestamp=datetime.utcnow(), color=0x2F3136)
+        betaemb = discord.Embed(description="Finally, we want to introduce our BETA Launch! Thanks for being so active in our discord! Today we are making a giveaway where everyone are in the participants list for being with us on Discord. \n**On this occasion, we are giving away FREE 100 BETA Tester roles where you can try our app and platform!** And the best this is that you don't have to do anything! Just stay in this Discord Server and invite some of your friends for good luck :) \nWinners will be chosen on <t:1658912400:f>, so don't sleep, there isn't much time left!", timestamp=datetime.utcnow(), color=0x2F3136)
         betaemb.set_author(name="Playmanity BETA Launch!", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png")
         betaemb.set_footer(text="Playmanity Security - 2022®")
         await ctx.send(embed=betaemb)
