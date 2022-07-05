@@ -11,6 +11,7 @@ class Playmanity(commands.Cog):
     @commands.command()
     @commands.has_permissions()
     async def dcgames(self, ctx):
+        await ctx.message.delete()
         gamesemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
         gamesemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         gamesemb.set_footer(text="Playmanity Security - 2022®")
@@ -21,6 +22,7 @@ class Playmanity(commands.Cog):
     @commands.command()
     @commands.has_permissions()
     async def dcideas(self, ctx):
+        await ctx.message.delete()
         ideasemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
         ideasemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         ideasemb.set_footer(text="Playmanity Security - 2022®")
@@ -95,6 +97,7 @@ class Playmanity(commands.Cog):
     @commands.command()
     @commands.has_permissions()
     async def dcinfo(self, ctx):
+        await ctx.message.delete()
         infoemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
         infoemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         infoemb.set_footer(text="Playmanity Security - 2022®")
@@ -115,7 +118,8 @@ class Playmanity(commands.Cog):
 
     @commands.command()
     @commands.has_permissions()
-    async def betanch(self, ctx):
+    async def betatesters(self, ctx):
+        await ctx.message.delete()
         betaemb = discord.Embed(description="Finally, we want to introduce our BETA Launch! Thanks for being so active in our discord! Today we are making a giveaway where everyone are in the participants list for being with us on Discord. \n**On this occasion, we are giving away FREE 100 BETA Tester roles where you can try our app and platform!** And the best this is that you don't have to do anything! Just stay in this Discord Server and invite some of your friends for good luck :) \nWinners will be chosen on <t:1658912400:f>, so don't sleep, there isn't much time left!", timestamp=datetime.utcnow(), color=0x2F3136)
         betaemb.set_author(name="Playmanity BETA Launch!", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png")
         betaemb.set_footer(text="Playmanity Security - 2022®")
