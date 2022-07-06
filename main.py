@@ -161,7 +161,7 @@ async def on_member_remove(member):
     await channel.send(embed=leftembed)
 
 @bot.event
-async def on_message(message, member):
+async def on_message(member, message):
     if "MessageType.premium_guild" in str(message.type):
         await message.channel.send(f"<a:boost:993941539795505243> Thanks {member.mention} for boosting!")
 
