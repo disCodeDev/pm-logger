@@ -143,7 +143,7 @@ async def edit_embed():
 
 @bot.event
 async def on_member_join(member):
-    channel = discord.Utils.get(member.guild.channels, name="🚀・system-logs")
+    channel = discord.utils.get(member.guild.channels, name="🚀・system-logs")
     mc = len(ctx.guild.members)
     welcomeembed = discord.Embed(description=f"> Yoo! **{member.name}** joined **Playmanity Discord!** \n> Now we have **{mc}** members.", timestamp=datetime.utcnow(), color=0x2F3136)
     welcomeembed.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png")
@@ -153,7 +153,7 @@ async def on_member_join(member):
 
 @bot.event
 async def on_member_remove(member):
-    channel = discord.Utils.get(member.guild.channels, name="🚀・system-logs")
+    channel = discord.utils.get(member.guild.channels, name="🚀・system-logs")
     mc = len(ctx.guild.members)
     leftembed = discord.Embed(description=f"> Sad... **{member.name}** left **Playmanity Discord!** \n> Now we have **{mc}** members.", timestamp=datetime.utcnow(), color=0x2F3136)
     leftembed.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png")
