@@ -1,4 +1,4 @@
-import discord
+import discord, tasks
 from discord.ext import commands
 from datetime import datetime
 
@@ -7,16 +7,6 @@ class Playmanity(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
-    @commands.command()
-    @commands.has_permissions()
-    async def dcgames(self, ctx):
-        await ctx.message.delete()
-        gamesemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
-        gamesemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
-        gamesemb.set_footer(text="Playmanity Security - 2022®")
-        gamesemb.add_field(name="<:pmdot2:992498402594127962> Playmanity Games", value="Down here you can see the list of games we currently have: \n<:pmdot2:992498402594127962> Arpsic \n<:pmdot2:992498402594127962> The Kostka \n** **\n> That's all we have for now, but don't worry, we add more games every week! \n> If you are a game developer or publisher and want to work with us, please reach any of the staff team members to get started! Remember, you get a few perks ;)", inline=False)
-        await ctx.send(embed=gamesemb)
 
 
     @commands.command()
@@ -124,6 +114,38 @@ class Playmanity(commands.Cog):
         betaemb.set_author(name="Playmanity BETA Launch!", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png")
         betaemb.set_footer(text="Playmanity Security - 2022®")
         await ctx.send(embed=betaemb)
+
+
+    @tasks.loop(seconds = 10, count=3)
+    async def edit_embed(self):
+        message = get_channel(989857651250855936).fetch_message(992797020433682497)
+        #updated_embed = discord.Embed(title="Hi")
+        gamesemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
+        gamesemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        gamesemb.set_footer(text="Playmanity Security - 2022®")
+        gamesemb.add_field(name="<:pmdot2:992498402594127962> Playmanity Games", value="Down here you can see the list of games we currently have: \n<:pmdot2:992498402594127962> Arpsic \n<:pmdot2:992498402594127962> The Kostka \n :pmdot2: Secret Game: Exclusively Playmanity's Game! \n** **\n> That's all we have for now, but don't worry, we add more games every week! \n> If you are a game developer or publisher and want to work with us, please reach any of the staff team members to get started! Remember, you get a few perks ;)", inline=False)
+        message.edit(embed=gamesemb)
+'''
+    @commands.command()
+    @commands.has_permissions()
+    async def dcgames(self, ctx):
+        await ctx.message.delete()
+        gamesemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
+        gamesemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        gamesemb.set_footer(text="Playmanity Security - 2022®")
+        gamesemb.add_field(name="<:pmdot2:992498402594127962> Playmanity Games", value="Down here you can see the list of games we currently have: \n<:pmdot2:992498402594127962> Arpsic \n<:pmdot2:992498402594127962> The Kostka \n** **\n> That's all we have for now, but don't worry, we add more games every week! \n> If you are a game developer or publisher and want to work with us, please reach any of the staff team members to get started! Remember, you get a few perks ;)", inline=False)
+        await ctx.send(embed=gamesemb)
+'''
+
+
+
+
+
+
+
+
+
+
 
 def setup(bot):
     bot.add_cog(Playmanity(bot))

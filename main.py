@@ -5,7 +5,7 @@ load cogs
 
 # Import Discord Library
 from discord.ext import commands
-import discord
+import discord, tasks
 import aiohttp
 import datetime
 import warnings
@@ -33,7 +33,7 @@ async def on_ready():
     print(f"Logger version: {version}")
     print(f"{bot.user.name}: {bot.user.id}")
     print("--- Ready! ---")
-    await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name='-help・Plaimanity.com'))
+    await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name='-help・Playmanity.com'))
 
 
 
