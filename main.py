@@ -4,9 +4,8 @@ load cogs
 """
 
 # Import Discord Library
-from discord.ext import commands
-from discord.ext import tasks
-import discord, tasks
+from discord.ext import commands, tasks
+import discord
 import aiohttp
 import datetime
 import warnings
