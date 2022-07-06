@@ -149,7 +149,7 @@ async def on_member_join(member):
     welcomeembed.set_footer(text="Playmanity security - 2022®")
     await channel.send(embed=welcomeembed)
 
-@bot.event()
+@bot.event
 async def on_member_remove(member):
     channel = discord.Utils.get(member.guild.channels, name="🚀・system-logs")
     mc = len(ctx.guild.members)
