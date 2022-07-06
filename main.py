@@ -131,7 +131,9 @@ async def node(ctx):
 
 @tasks.loop(seconds = 10)
 async def edit_embed():
-    message = get_channel(989857651250855936).fetch_message(992797020433682497)
+    channel = discord.Utils.get(member.guild.channels, name="🚀・system-logs")
+    message = channel.fetch_message(992797020433682497)
+    #message = get_channel(989857651250855936).fetch_message(992797020433682497)
     gamesemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
     gamesemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
     gamesemb.set_footer(text="Playmanity Security - 2022®")
