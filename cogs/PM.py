@@ -127,14 +127,13 @@ class Playmanity(commands.Cog):
 
     @commands.command()
     @commands.has_role('・Support')
-    async def betarole(self, ctx, user: discord.User = None):
+    async def betarole(self, ctx, user: discord.Member = None):
         if user == None:
             await ctx.send("Please specify a user you want to give the role!")
         else:
-            #role = ctx.guild.get_role(993852443945341008)
             role = discord.utils.get(ctx.guild.roles, name="BETA Tester")
-            #role = discord.utils.get(bot.get_guild(ctx.guild.id).roles, id ="993852443945341008")
-            await self.user.add_roles(role)
+            await user.add_roles(role)
+            await ctx.send(f"**{ctx.author.name}** gave **BETA Tester** role to {user.mention}!")
     
 
 '''
