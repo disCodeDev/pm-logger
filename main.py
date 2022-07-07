@@ -131,13 +131,14 @@ async def node(ctx):
 
 @tasks.loop(seconds = 10)
 async def edit_embed():
-    channel = bot.get_channel(989857651250855936)
-    message = channel.fetch_message(992797020433682497)
+    #channel = bot.get_channel(989857651250855936)
+    #message = channel.fetch_message(992797020433682497)
+    msg = bot.get_channel(989857651250855936).fetch_message(992797020433682497)
     gamesemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
     gamesemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
     gamesemb.set_footer(text="Playmanity Security - 2022®")
     gamesemb.add_field(name="<:pmdot2:992498402594127962> Playmanity Games", value="Down here you can see the list of games we currently have: \n<:pmdot2:992498402594127962> Arpsic \n<:pmdot2:992498402594127962> The Kostka \n<:pmdot2:992498402594127962 Dark web \n<:pmdot2:992498402594127962 Secret Game: Exclusively Playmanity's Game! \n** **\n> That's all we have for now, but don't worry, we add more games every week! \n> If you are a game developer or publisher and want to work with us, please reach any of the staff team members to get started! Remember, you get a few perks ;)", inline=False)
-    message.edit(embed=gamesemb)
+    msg.edit(embed=gamesemb)
 
 
 @bot.event
@@ -160,14 +161,6 @@ async def on_member_remove(member):
     leftembed.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png")
     leftembed.set_footer(text="Playmanity security - 2022®")
     await channel.send(embed=leftembed)
-
-@bot.event
-async def on_message(message):
-    if "MessageType.premium_guild" in str(message.type):
-        await message.channel.send(f"<a:boost:993941539795505243> Thanks {author.mention} for boosting!")
-        await message.add_reaction("<a:boost:993941539795505243>")
-    else:
-        pass
 
 
 bot.load_extension('cogs.Messages')
