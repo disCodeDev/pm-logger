@@ -115,6 +115,26 @@ class Playmanity(commands.Cog):
         betaemb.set_footer(text="Playmanity Security - 2022®")
         await ctx.send(embed=betaemb)
 
+    @commands.command()
+    @commands.has_permissions()
+    async def dcfaq(self, ctx):
+        await ctx.message.delete()
+        faqemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
+        faqemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        faqemb.set_footer(text="Playmanity Security - 2022®")
+
+        await ctx.send(embed=faqemb)
+
+    @commands.command()
+    @commands.has_role('・Support')
+    async def boostrole(self, ctx, user: discord.user = None):
+        if user == None:
+            await ctx.send("Please specify a user you want to give the role!")
+        else:
+            role = ctx.guild.get_role(993852443945341008)
+            await user.add_roles(role)
+
+
 '''
     @tasks.loop(seconds = 10, count=3)
     async def edit_embed(self):
