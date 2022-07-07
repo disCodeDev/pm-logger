@@ -127,7 +127,7 @@ class Playmanity(commands.Cog):
 
     @commands.command()
     @commands.has_role('・Support')
-    async def boostrole(self, ctx, user: discord.user = None):
+    async def boostrole(self, ctx, user: discord.User = None):
         if user == None:
             await ctx.send("Please specify a user you want to give the role!")
         else:
