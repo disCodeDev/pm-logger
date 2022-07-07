@@ -34,7 +34,7 @@ async def on_ready():
     print(f"{bot.user.name}: {bot.user.id}")
     print("--- Ready! ---")
     await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name='-help・Playmanity.com'))
-    edit_embed.start()
+    #edit_embed.start()
 
 
 # COGS
