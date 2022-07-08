@@ -119,10 +119,9 @@ class Playmanity(commands.Cog):
     @commands.has_permissions()
     async def dcfaq(self, ctx):
         await ctx.message.delete()
-        faqemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
+        faqemb = discord.Embed(description="", timestamp=datetime.utcnow(), color=0x2F3136)
         faqemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         faqemb.set_footer(text="Playmanity Security - 2022®")
-
         await ctx.send(embed=faqemb)
 
     @commands.command()

@@ -151,6 +151,9 @@ async def on_member_join(member):
     welcomeembed.set_thumbnail(url=member.avatar_url)
     welcomeembed.set_footer(text="Playmanity security - 2022®")
     await channel.send(embed=welcomeembed)
+    await asyncio.sleep(60)
+    role = discord.utils.get(member.guild.roles, id=823569170976473098)
+    await member.add_roles(role)
 
 @bot.event
 async def on_member_remove(member):
