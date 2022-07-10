@@ -35,7 +35,11 @@ async def on_ready():
     print(f"{bot.user.name}: {bot.user.id}")
     print("--- Ready! ---")
     await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name='-help・Playmanity.com'))
-    #edit_embed.start()
+    while True:
+        channel = bot.get_channel(995631123549921320)   # Channel ID (Voice Channel)
+        guild = bot.get_guild(823565989865979976) # Server ID / Guild ID
+        await channel.edit(name=f'🎮・Members: {len(guild.members)}')
+        await asyncio.sleep(180)
 
 
 # COGS
