@@ -35,7 +35,7 @@ async def on_ready():
     print(f"{bot.user.name}: {bot.user.id}")
     print("--- Ready! ---")
     await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name='-help・Playmanity.com'))
-    mchannel_loop().start
+    await mchannel_loop().start
     while True:
         bchannel = bot.get_channel(995635444161187850)
         await bchannel.edit(name=f'🎮・Boosters: {str(guild.premium_subscribers)}')
