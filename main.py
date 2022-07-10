@@ -38,7 +38,7 @@ async def on_ready():
     mchannel_loop.start()
     while True:
         bchannel = bot.get_channel(995635444161187850)
-        await bchannel.edit(name=f'🎮・Boosters: {str(guild.premium_subscribers)}')
+        await bchannel.edit(name=f'🎮・Boosters: {str(guild_object.premium_subscribers)}')
         await asyncio.sleep(180)
 
 @tasks.loop(seconds=60)
