@@ -117,6 +117,9 @@ async def timeout_user(*, user_id: int, guild_id: int, until):
         if session.status in range(200, 299):
            return True
         return False
+
+
+
 @bot.command()
 @commands.has_permissions(kick_members=True)
 async def timeout(ctx: commands.Context, member: discord.Member, until: int):
@@ -126,6 +129,7 @@ async def timeout(ctx: commands.Context, member: discord.Member, until: int):
         member.send(f"<:timeend:943568323570962432> You have been timed out in {ctx.guild.name} for {until} minutes.")
     await ctx.send("<:oops:964606229341151373> Something went wrong!")
 
+
 @bot.command()
 async def node(ctx):
     bedem = discord.Embed(title = 'System Resource Usage', description = 'See CPU and memory usage of the system.')
@@ -133,6 +137,7 @@ async def node(ctx):
     bedem.add_field(name = 'Memory Usage', value = f'{psutil.virtual_memory().percent}%', inline = False)
     bedem.add_field(name = 'Available Memory', value = f'{psutil.virtual_memory().available / 1048576} / {psutil.virtual_memory().total / 1048576}MB', inline = False)
     await ctx.send(embed = bedem)
+
 '''
 @tasks.loop(seconds = 10)
 async def edit_embed():
@@ -145,6 +150,7 @@ async def edit_embed():
     gamesemb.add_field(name="<:pmdot2:992498402594127962> Playmanity Games", value="Down here you can see the list of games we currently have: \n<:pmdot2:992498402594127962> Arpsic \n<:pmdot2:992498402594127962> The Kostka \n<:pmdot2:992498402594127962 Dark web \n<:pmdot2:992498402594127962 Secret Game: Exclusively Playmanity's Game! \n** **\n> That's all we have for now, but don't worry, we add more games every week! \n> If you are a game developer or publisher and want to work with us, please reach any of the staff team members to get started! Remember, you get a few perks ;)", inline=False)
     await msg.edit(embed=gamesemb)
 '''
+
 
 @bot.event
 async def on_member_join(member):
@@ -159,6 +165,7 @@ async def on_member_join(member):
     await asyncio.sleep(60)
     role = discord.utils.get(member.guild.roles, id=823569170976473098)
     await member.add_roles(role)
+
 
 @bot.event
 async def on_member_remove(member):
