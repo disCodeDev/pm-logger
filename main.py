@@ -26,7 +26,7 @@ import sys
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix=command_prefix, status=discord.Status.do_not_disturb, activity=discord.Game(name='Starting...'), intents=intents)
-bot.remove_command('help')
+#bot.remove_command('help')
 bot.session = aiohttp.ClientSession()
 
 @bot.event
