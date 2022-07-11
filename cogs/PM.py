@@ -140,7 +140,7 @@ class Playmanity(commands.Cog):
     async def mc(self, ctx):
         allmc = {len(ctx.guild.members)}
         mc = len([m for m in ctx.guild.members if not m.bot])
-        bots = allmc - mc
+        bots = len(discord.utils.find(lambda m: m.is_bot, members))
         mcemb = discord.Embed(description=f"<:pmdot2:992498402594127962> All members: {allmc} \n<:pmdot2:992498402594127962> True members: {mc} \n<:pmdot2:992498402594127962> Bots: {bots}", timestamp=datetime.utcnow(), color=0x2F3136)
         mcemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         mcemb.set_footer(text="Playmanity Security - 2022®")
