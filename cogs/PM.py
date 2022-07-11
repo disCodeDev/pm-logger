@@ -139,12 +139,85 @@ class Playmanity(commands.Cog):
     @commands.has_permissions()
     async def mc(self, ctx):
         allmc = {len(ctx.guild.members)}
-        mc = len([m for m in ctx.guild.members if not m.bot])
-        bots = len(discord.utils.find(lambda m: m.is_bot, ctx.guild.members))
+        mc = len([m for m in ctx.guild.members if not m.bot]) 
+        bots = sum(m.bot for m in ctx.guild.members)
         mcemb = discord.Embed(description=f"<:pmdot2:992498402594127962> All members: {allmc} \n<:pmdot2:992498402594127962> True members: {mc} \n<:pmdot2:992498402594127962> Bots: {bots}", timestamp=datetime.utcnow(), color=0x2F3136)
         mcemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         mcemb.set_footer(text="Playmanity Security - 2022®")
         await ctx.send(embed=mcemb)
+    
+
+    @commands.command(aliases=['sinfo'])
+    @commands.has_permissions()
+    async def serverinfo(ctx):
+        counter = 0
+        total_emojis_count = 0
+        total_text_channels_counter = 0
+        total_voice_channels_counter = 0
+        total_user_counter = 0
+        total_channels_counter = 0
+        for e in ctx.guild.emojis:
+            counter += 1
+            total_emojis_count += 1
+        for t in ctx.guild.text_channels:
+            counter += 1
+            total_text_channels_counter += 1
+        for v in ctx.guild.voice_channels:
+            counter += 1
+            total_voice_channels_counter += 1
+        for c in ctx.guild.channels:
+            counter += 1
+            total_channels_counter += 1
+        siemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
+        siemb.set_thumbnail(url=ctx.guild.icon_url)
+        siemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        siemb.add_field(name='Server Owner', value=ctx.guild.owner, inline=False)
+        siemb.add_field(name='ID', value=ctx.guild.id, inline=False)
+        siemb.add_field(name='Emojis', value=str(total_emojis_count), inline=False)
+        siemb.add_field(name='Member count:' + str(ctx.guild.member_count), value='Users:' + str(total_user_counter) , inline=False)
+        siemb.add_field(name="Total channels" + str(total_channels_counter), value='Text channels:' + str(total_text_channels_counter) + '\n' + 'Voice channels' + str(total_voice_channels_counter), inline=False)
+        await ctx.send(embed=siemb)
+
+
+    @commands.command()
+    @commands.has_permissions()
+    async def ping(ctx):
+        latency = bot.latency * 1000
+        pingemb = discord.Embed(description=f"<:pmdot2:992498402594127962> Bot latency: **{latency:.2f}ms** \n<:pmdot2:992498402594127962> Database latency: **--**", timestamp=datetime.utcnow(), color=0x2F3136)
+        pingemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        pingemb.set_footer(text="Playmanity Security - 2022®")
+        await ctx.send(embed=pingemb)
+
+
+    @commands.command(aliases=['echo'])
+    @commands.has_permissions(manage_messages=True)
+    async def say(ctx, arg):
+        await ctx.send(arg)
+        await ctx.message.delete()
+
+
+    @commands.command(aliases=['eecho'])
+    @commands.has_permissions(manage_messages=True)
+    async def embed(ctx, arg):
+        eechoemb = discord.Embed(description=arg, timestamp=datetime.utcnow(), color=0x2F3136)
+        eechoemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        eechoemb.set_footer(text="Playmanity Security - 2022®")
+        await ctx.send(embed=eechoemb)
+        await ctx.message.delete()
+
+
+    @commands.command()
+    @commands.has_permissions()
+    async def users(self, ctx, guild_id: int = None):
+        guild_usr_count = sum(len(i.members) for i in self.bot.guilds)
+        guced = discord.Embed(title='Current user count', color=Colors.ClemsonOrange)
+        gucemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        gucemb.set_footer(text="Playmanity Security - 2022®")
+        gucemb.add_field(name=f'Guild: {guild_id}' if guild_id else 'Global', value=count)
+        await ctx.send(embed=gucemb)
+
+
+
 
 
 
