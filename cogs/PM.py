@@ -141,7 +141,7 @@ class Playmanity(commands.Cog):
         allmc = len(ctx.guild.members)
         mc = len([m for m in ctx.guild.members if not m.bot]) 
         bots = sum(m.bot for m in ctx.guild.members)
-        mcemb = discord.Embed(description=f"<:pmdot2:992498402594127962> All members: {allmc} \n<:pmdot2:992498402594127962> True members: {mc} \n<:pmdot2:992498402594127962> Bots: {bots}", timestamp=datetime.utcnow(), color=0x2F3136)
+        mcemb = discord.Embed(description=f"<:pmdot2:992498402594127962> All users: **{allmc}** \n<:pmdot2:992498402594127962> Members: **{mc}** \n<:pmdot2:992498402594127962> Bots: **{bots}**", timestamp=datetime.utcnow(), color=0x2F3136)
         mcemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         mcemb.set_footer(text="Playmanity Security - 2022®")
         await ctx.send(embed=mcemb)
@@ -182,7 +182,7 @@ class Playmanity(commands.Cog):
 
     @commands.command()
     @commands.has_permissions()
-    async def ping(ctx):
+    async def ping(self, ctx):
         latency = bot.latency * 1000
         pingemb = discord.Embed(description=f"<:pmdot2:992498402594127962> Bot latency: **{latency:.2f}ms** \n<:pmdot2:992498402594127962> Database latency: **--**", timestamp=datetime.utcnow(), color=0x2F3136)
         pingemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
@@ -192,14 +192,14 @@ class Playmanity(commands.Cog):
 
     @commands.command(aliases=['echo'])
     @commands.has_permissions(manage_messages=True)
-    async def say(ctx, arg):
+    async def say(self, ctx, arg):
         await ctx.send(arg)
         await ctx.message.delete()
 
 
     @commands.command(aliases=['eecho'])
     @commands.has_permissions(manage_messages=True)
-    async def embed(ctx, arg):
+    async def embed(self, ctx, arg):
         eechoemb = discord.Embed(description=arg, timestamp=datetime.utcnow(), color=0x2F3136)
         eechoemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         eechoemb.set_footer(text="Playmanity Security - 2022®")
@@ -211,7 +211,7 @@ class Playmanity(commands.Cog):
     @commands.has_permissions()
     async def users(self, ctx):
         guild_usr_count = sum(len(i.members) for i in self.bot.guilds)
-        guced = discord.Embed(description=f'This bot is used by {guild_usr_count} members!', timestamp=datetime.utcnow(), color=0x2F3136)
+        gucemb = discord.Embed(description=f'This bot is used by {guild_usr_count} members!', timestamp=datetime.utcnow(), color=0x2F3136)
         gucemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         gucemb.set_footer(text="Playmanity Security - 2022®")
         await ctx.send(embed=gucemb)
