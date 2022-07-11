@@ -183,7 +183,7 @@ class Playmanity(commands.Cog):
     @commands.command()
     @commands.has_permissions()
     async def ping(self, ctx):
-        latency = bot.latency * 1000
+        latency = self.bot.latency * 1000
         pingemb = discord.Embed(description=f"<:pmdot2:992498402594127962> Bot latency: **{latency:.2f}ms** \n<:pmdot2:992498402594127962> Database latency: **--**", timestamp=datetime.utcnow(), color=0x2F3136)
         pingemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         pingemb.set_footer(text="Playmanity Security - 2022®")
