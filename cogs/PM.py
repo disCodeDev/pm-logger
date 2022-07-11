@@ -149,7 +149,7 @@ class Playmanity(commands.Cog):
 
     @commands.command(aliases=['sinfo'])
     @commands.has_permissions()
-    async def serverinfo(ctx):
+    async def serverinfo(self, ctx):
         counter = 0
         total_emojis_count = 0
         total_text_channels_counter = 0
@@ -171,6 +171,7 @@ class Playmanity(commands.Cog):
         siemb = discord.Embed(timestamp=datetime.utcnow(), color=0x2F3136)
         siemb.set_thumbnail(url=ctx.guild.icon_url)
         siemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        siemb.set_footer(text="Playmanity Security - 2022®")
         siemb.add_field(name='Server Owner', value=ctx.guild.owner, inline=False)
         siemb.add_field(name='ID', value=ctx.guild.id, inline=False)
         siemb.add_field(name='Emojis', value=str(total_emojis_count), inline=False)
