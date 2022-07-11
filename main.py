@@ -36,10 +36,10 @@ async def on_ready():
     print("--- Ready! ---")
     await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name='-help・Playmanity.com'))
     mchannel_loop.start()
-    while True:
-        bchannel = bot.get_channel(995635444161187850)
-        await bchannel.edit(name=f'🎮・Boosters: {str(guild_object.premium_subscribers)}')
-        await asyncio.sleep(180)
+#    while True:
+#        bchannel = bot.get_channel(995635444161187850)
+#        await bchannel.edit(name=f'🎮・Boosters: {str(guild_object.premium_subscribers)}')
+#        await asyncio.sleep(180)
 
 @tasks.loop(seconds=60)
 async def mchannel_loop():
@@ -187,7 +187,7 @@ bot.load_extension('cogs.Messages')
 bot.load_extension('cogs.Reactions')
 bot.load_extension('cogs.Commands')
 bot.load_extension('cogs.Tickets')
-#bot.load_extension('cogs.Help')
+#   bot.load_extension('cogs.Help')
 bot.load_extension('cogs.Config')
 bot.load_extension('cogs.Uptime')
 bot.load_extension('cogs.PM')
