@@ -65,9 +65,9 @@ class Help(commands.Cog):
         confe = discord.Embed(title=",help mod")
         await ctx.send(embed = confe)
 
-def setup(bot):
-    bot.add_cog(Help(bot))
-    print("Help cog loaded")
+#def setup(bot):
+#    bot.add_cog(Help(bot))
+#    print("Help cog loaded")
 
 
 
