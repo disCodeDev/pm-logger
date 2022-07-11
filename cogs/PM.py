@@ -138,7 +138,7 @@ class Playmanity(commands.Cog):
     @commands.command()
     @commands.has_permissions()
     async def mc(self, ctx):
-        allmc = {len(ctx.guild.members)}
+        allmc = len(ctx.guild.members)
         mc = len([m for m in ctx.guild.members if not m.bot]) 
         bots = sum(m.bot for m in ctx.guild.members)
         mcemb = discord.Embed(description=f"<:pmdot2:992498402594127962> All members: {allmc} \n<:pmdot2:992498402594127962> True members: {mc} \n<:pmdot2:992498402594127962> Bots: {bots}", timestamp=datetime.utcnow(), color=0x2F3136)
