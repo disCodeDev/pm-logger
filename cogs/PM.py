@@ -208,12 +208,11 @@ class Playmanity(commands.Cog):
 
     @commands.command()
     @commands.has_permissions()
-    async def users(self, ctx, guild_id: int = None):
+    async def users(self, ctx):
         guild_usr_count = sum(len(i.members) for i in self.bot.guilds)
-        guced = discord.Embed(title='Current user count', color=Colors.ClemsonOrange)
+        guced = discord.Embed(description=f'This bot is used by {guild_usr_count} members!', timestamp=datetime.utcnow(), color=0x2F3136)
         gucemb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         gucemb.set_footer(text="Playmanity Security - 2022®")
-        gucemb.add_field(name=f'Guild: {guild_id}' if guild_id else 'Global', value=count)
         await ctx.send(embed=gucemb)
 
 
