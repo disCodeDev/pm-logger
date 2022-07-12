@@ -186,7 +186,7 @@ async def on_member_remove(member):
 bot.load_extension('cogs.Messages')
 bot.load_extension('cogs.Reactions')
 bot.load_extension('cogs.Commands')
-bot.load_extension('cogs.Tickets')
+bot.load_extension('Tickets')
 #   bot.load_extension('cogs.Help')
 bot.load_extension('cogs.Config')
 bot.load_extension('cogs.Uptime')
