@@ -20,8 +20,8 @@ class Tickets(commands.Cog):
         t1emb.set_footer(text="Playmanity Security - 2022®")
 
         t1msg = await ctx.send(embed=t1emb)
-        await msg.add_reaction('<:pm1:992308768710873158>')
-        reaction = await msg.fetch_message(msg.id)
+        await t1msg.add_reaction('<:pm1:992308768710873158>')
+        reaction = await t1msg.fetch_message(t1msg.id)
 
         def check(reaction, user):
             return str(reaction) == '<:pm1:992308768710873158>' and ctx.author == user
