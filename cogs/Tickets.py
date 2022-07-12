@@ -19,7 +19,7 @@ class Tickets(commands.Cog):
         t1emb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         t1emb.set_footer(text="Playmanity Security - 2022®")
 
-        t1msg = await ctx.send(embed=temb)
+        t1msg = await ctx.send(embed=t1emb)
         await msg.add_reaction('<:pm1:992308768710873158>')
         reaction = await msg.fetch_message(msg.id)
 
