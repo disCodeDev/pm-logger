@@ -13,6 +13,22 @@ class Tickets(commands.Cog):
 
 
     @commands.command()
+    async def ticket(self, ctx):
+        temb = discord.Embed(description="", color=0x00ff00)
+        msg = await ctx.send(embed=temb)
+        await msg.add_reaction('📩')
+        reaction = await msg.fetch_message(msg.id)
+
+        def check(reaction, user):
+            return str(reaction) == '📩' and ctx.author == user
+
+        await bot.wait_for("reaction_add", check=check)
+        await ctx.guild.create_text_channel(name=f'ticket-{ctx.author}')
+
+
+
+
+    @commands.command()
     async def new(self, ctx, *, args = None):
         await ctx.message.delete()
         await self.bot.wait_until_ready()
