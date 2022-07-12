@@ -14,17 +14,78 @@ class Tickets(commands.Cog):
 
     @commands.command()
     async def ticket(self, ctx):
-        temb = discord.Embed(description="", color=0x00ff00)
-        msg = await ctx.send(embed=temb)
-        await msg.add_reaction('📩')
+        # 1st part
+        t1emb = discord.Embed(description="Once you click the emoji at the end of this message, you will create a new channel called Ticket. Ticket is like private channel when only you and support team. \n** **\n**<:checkmark:996456819574702080> NOTE!** Only create the Ticket if you want to get more info about **becoming a game developer**!", timestamp=datetime.utcnow(), color=0x00ff00)
+        t1emb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        t1emb.set_footer(text="Playmanity Security - 2022®")
+
+        t1msg = await ctx.send(embed=temb)
+        await msg.add_reaction('<:pm1:992308768710873158>')
         reaction = await msg.fetch_message(msg.id)
 
         def check(reaction, user):
-            return str(reaction) == '📩' and ctx.author == user
+            return str(reaction) == '<:pm1:992308768710873158>' and ctx.author == user
 
-        await bot.wait_for("reaction_add", check=check)
-        await ctx.guild.create_text_channel(name=f'ticket-{ctx.author}')
+        await self.bot.wait_for("reaction_add", check=check)
+        with open("data.json") as f:
+            data = json.load(f)
+        tnumber = int(data["tcounter"])
+        tnumber += 1
+        tchannel = await ctx.guild.create_text_channel("・ticket-{}".format(tnumber))
+        await tchannel.set_permissions(ctx.guild.get_role(ctx.guild.id), send_messages=False, read_messages=False)
 
+        for role_id in data["valid-roles"]:
+            role = ctx.guild.get_role(role_id)
+            await tchannel.set_permissions(role, send_messages=True, read_messages=True, add_reactions=True, embed_links=True, attach_files=True, read_message_history=True, external_emojis=True)
+        await tchannel.set_permissions(ctx.author, send_messages=True, read_messages=True, add_reactions=True, embed_links=True, attach_files=True, read_message_history=True, external_emojis=True)
+
+        data["tchannel-ids"].append(tchannel.id)
+        data["tcounter"] = int(tnumber)
+        with open("data.json", 'w') as f:
+            json.dump(data, f)
+
+        # 2nd part
+        t2emb = discord.Embed(description="Thanks for making a ticket!", timestamp=datetime.utcnow(), color=0x2F3136)
+        t2emb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+        t2emb.set_footer(text="Playmanity Security - 2022®")
+
+        t2msg = await ctx.tchannel.send(f'<@823569100692783164>', embed=t2emb)
+        await msg.add_reaction('<:xmark:996434171700461578>')
+
+        with open('data.json') as f:
+            data = json.load(f)
+
+        if ctx.channel.id in data["tchannel-ids"]:
+            channel_id = ctx.channel.id
+            def check(reaction):
+                return str(reaction) == '<:xmark:996434171700461578>' and ctx.author == user
+            await self.bot.wait_for("reaction_add", check=check, timeout=60)
+            try:    
+                t3emb = discord.Embed(description="Are you sure you want to close this ticket? Add <:checkmark:996456819574702080> reaction to confirm!", color=0x2F3136)
+                t3emb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
+                t3emb.set_footer(text="Playmanity Security - 2022®")
+
+                t3msg = await ctx.send(embed=t3emb)
+                await t3msg.add_reaction('<:checkmark:996456819574702080>')
+
+                def check(reaction):
+                    return str(reaction) == '<:checkmark:996456819574702080>' and ctx.author == user
+
+                await self.bot.wait_for("reaction_add", check=check, timeout=60)
+                await ctx.send("<:checkmark:996456819574702080> This ticket automatically will close after **5 seconds!**")
+                await asyncio.sleep(5)
+                await ctx.channel.delete()
+
+                index = data["tchannel-ids"].index(channel_id)
+                del data["tchannel-ids"][index]
+                with open('data.json', 'w') as f:
+                    json.dump(data, f)
+            except asyncio.TimeoutError:
+                await ctx.send('An error occured!')
+# ..........................................................................................................
+#            except asyncio.TimeoutError:
+#                em = discord.Embed(title="Auroris Tickets", description="You have run out of time to close this ticket. Please run the command again.", color=0x2F3136)
+#                await ctx.send(embed=em)
 
 
 
@@ -67,7 +128,7 @@ class Tickets(commands.Cog):
         data["ticket-counter"] = int(ticket_number)
         with open("data.json", 'w') as f:
             json.dump(data, f)
-        created_em = discord.Embed(title="Auroris Tickets", description="Your ticket has been created at {}".format(ticket_channel.mention), color=0x00a8ff)
+        created_em = discord.Embed(title="Playmanity Tickets", description="Your ticket has been created at {}".format(ticket_channel.mention), color=0x00a8ff)
         await ctx.send(embed=created_em, delete_after=10)
 
     @commands.command()
