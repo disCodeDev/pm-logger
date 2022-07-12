@@ -21,7 +21,7 @@ class Tickets(commands.Cog):
 
         t1msg = await ctx.send(embed=t1emb)
         await t1msg.add_reaction('<:pm1:992308768710873158>')
-        reaction = await t1msg.fetch_message(msg.id)
+        #reaction = await t1msg.fetch_message(msg.id)
 
         def check(reaction, user):
             return str(reaction) == '<:pm1:992308768710873158>' and ctx.author == user
@@ -50,7 +50,7 @@ class Tickets(commands.Cog):
         t2emb.set_footer(text="Playmanity Security - 2022®")
 
         t2msg = await ctx.tchannel.send(f'<@823569100692783164>', embed=t2emb)
-        await msg.add_reaction('<:xmark:996434171700461578>')
+        await t2msg.add_reaction('<:xmark:996434171700461578>')
 
         with open('data.json') as f:
             data = json.load(f)
