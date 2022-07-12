@@ -15,13 +15,13 @@ class Tickets(commands.Cog):
     @commands.command()
     async def ticket(self, ctx):
         # 1st part
-        t1emb = discord.Embed(description="Once you click the emoji at the end of this message, you will create a new channel called Ticket. Ticket is like private channel when only you and support team. \n** **\n**<:checkmark:996456819574702080> NOTE!** Only create the Ticket if you want to get more info about **becoming a game developer**!", timestamp=datetime.utcnow(), color=0x00ff00)
+        t1emb = discord.Embed(description="Once you click the emoji at the end of this message, you will create a new channel called Ticket. Ticket is like private channel when only you and support team. \n** **\n**<:checkmark:996456819574702080> NOTE!** Only create the Ticket if you want to get more info about **becoming a game developer**!", timestamp=datetime.utcnow(), color=0x2F3136)
         t1emb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         t1emb.set_footer(text="Playmanity Security - 2022®")
 
         t1msg = await ctx.send(embed=t1emb)
         await t1msg.add_reaction('<:pm1:992308768710873158>')
-        reaction = await t1msg.fetch_message(t1msg.id)
+        reaction = await t1msg.fetch_message(msg.id)
 
         def check(reaction, user):
             return str(reaction) == '<:pm1:992308768710873158>' and ctx.author == user
