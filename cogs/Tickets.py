@@ -49,7 +49,7 @@ class Tickets(commands.Cog):
         t2emb.set_author(name="Playmanity Security", url="https://playmanity.com", icon_url="https://media.discordapp.net/attachments/991739957410537537/992050893388271676/Logo_dark.png?width=409&height=409")
         t2emb.set_footer(text="Playmanity Security - 2022®")
 
-        t2msg = await ctx.tchannel.send(f'<@823569100692783164>', embed=t2emb)
+        t2msg = await tchannel.send(f'<@823569100692783164>', embed=t2emb)
         await t2msg.add_reaction('<:xmark:996434171700461578>')
 
         with open('data.json') as f:
